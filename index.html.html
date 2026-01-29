@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/grid.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+h1, h2, h3 {
+    font-weight: 600;
+}
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+h3 { font-size: 1.5rem; }
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 100;
+    padding: 1rem 0;
+    animation: fadeIn 1s ease-in-out;
+}
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00ff88;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+.nav-links a:hover {
+    color: #00ff88;
+    text-decoration: underline;
+}
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url(images/gym\ image.png) no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    animation: slideInFromTop 1.5s ease-out;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+.hero h1 {
+    margin-bottom: 1rem;
+    color: #00ff88;
+}
+.hero p {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+}
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #00ff88;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.5);
+}
+/* About Section */
+.about {
+    padding: 5rem 0;
+    background-color: #1a1a1a;
+    animation: fadeIn 1s ease-in-out 0.5s both;
+}
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+.about-image img:hover {
+    transform: scale(1.05);
+}
+.about-text {
+    flex: 1;
+}
+/* Services Section */
+.services {
+    padding: 5rem 0;
+    background-color: #000;
+    animation: fadeIn 1s ease-in-out 1s both;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.service-card {
+    background-color: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3);
+    background-color: #00ff88;
+    color: #000;
+}
+.service-card img {
+    width: 200px;        
+    height: 200px;
+    max-width: 100%;
+    object-fit: cover;   
+    border-radius: 16px; 
+    margin-bottom: 1.5rem;
+}
+/* Benefits Section */
+.benefits {
+    padding: 5rem 0;
+    background-color: #1a1a1a;
+    animation: fadeIn 1s ease-in-out 1.5s both;
+}
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.benefit-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.benefit-item:hover {
+    transform: scale(1.05);
+}
+.benefit-item img {
+    width: 200px;        
+    height: 200px;
+    max-width: 100%;
+    object-fit: cover;   
+    border-radius: 16px; 
+    margin-bottom: 1.5rem;
+}
+/* Gallery Section */
+.gallery {
+    padding: 5rem 0;
+    background-color: #000;
+    animation: fadeIn 1s ease-in-out 2s both;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+.gallery-card {
+    position: relative;
+    width: 100%;
+    height: 420px;          
+    border-radius: 22px;
+    overflow: hidden;
+    background: #111;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    transition: 0.6s ease;
+}
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;      /* 👈 poori image dikhegi */
+    background: #000;
+    padding: 10px;
+}
+.gallery-card:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.15) contrast(1.1);
+}
+.gallery-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 70px rgba(0,255,136,0.4);
+}
+.label {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: 0.6s ease;
+}
+.gallery-card:hover .label {
+    opacity: 1;
+    transform: translateY(0);
+}
+.label span {
+    color: #00ff88;
+}
+/* label appear on hover */
+.gallery-card:hover .label {
+    opacity: 1;
+}
+.label span:first-child {
+    color: #ff4d4d;
+}
+.label span:last-child {
+    color: #00ff88;
+}
+.gallery-grid img:hover {
+    transform: scale(1.1);
+}
+/* Testimonials Section */
+.testimonials {
+    padding: 5rem 0;
+    background-color: #1a1a1a;
+    animation: fadeIn 1s ease-in-out 2.5s both;
+}
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+.testimonial-card {
+    background-color: #000;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.5);
+}
+.testimonial-card cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: italic;
+    color: #00ff88;
+}
+/* Contact Section */
+.contact {
+    padding: 5rem 0;
+    background-color: #000;
+    animation: fadeIn 1s ease-in-out 3s both;
+}
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.contact-form input,
+.contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #00ff88;
+    outline: none;
+}
+/* Footer */
+.neo-footer {
+    position: relative;
+    background: #000;
+    padding: 120px 20px 40px;
+    overflow: hidden;
+    text-align: center;
+}
+/* moving glow layer */
+.neo-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(0,255,136,0.25), transparent);
+    animation: glowMove 6s linear infinite;
+}
+@keyframes glowMove {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+/* floating particles illusion */
+.neo-particles {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(0,255,136,0.35) 2px, transparent 2px),
+        radial-gradient(circle, rgba(0,255,136,0.15) 2px, transparent 2px);
+    background-size: 80px 80px, 140px 140px;
+    animation: particlesMove 18s linear infinite;
+    opacity: 0.4;
+}
+@keyframes particlesMove {
+    from { background-position: 0 0, 0 0; }
+    to { background-position: 300px 300px, -300px -300px; }
+}
+/* content */
+.neo-content {
+    position: relative;
+    z-index: 2;
+}
+/* logo animation */
+.neo-logo {
+    font-size: 38px;
+    color: #00ff88;
+    margin-bottom: 10px;
+    animation: pulseGlow 2s infinite alternate;
+}
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 15px #00ff88; }
+    to { text-shadow: 0 0 40px #00ff88; }
+}
+/* tagline */
+.neo-tagline {
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+}
+/* socials */
+.neo-socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.neo-socials img {
+    width: 56px;
+    height: 56px;
+    animation: floatIcon 3.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(0,255,136,0.8));
+}
+.neo-socials a:nth-child(2) img { animation-delay: .6s; }
+.neo-socials a:nth-child(3) img { animation-delay: 1.2s; }
+@keyframes floatIcon {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+.neo-socials img:hover {
+    transform: scale(1.25) rotate(10deg);
+    filter: drop-shadow(0 0 35px rgba(0,255,136,1));
+}
+/* copyright */
+.neo-copy {
+    font-size: 13px;
+    color: #aaa;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitLife Pro - Transform Your Body</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">FitLife Pro</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Body, Elevate Your Life</h1>
+            <p>Unlock your potential with expert fitness training and personalized nutrition plans designed for real results.</p>
+            <a href="#contact" class="cta-button">Start Your Journey</a>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="images/second image.png" alt="Certified Fitness Trainer">
+                </div>
+                <div class="about-text">
+                    <h2>About FitLife Pro</h2>
+                    <p>At FitLife Pro, we empower individuals to achieve sustainable health and fitness goals through science-backed training and nutrition. Our certified trainers and nutritionists tailor programs to your lifestyle, ensuring you build strength, lose weight, or enhance performance safely and effectively.</p>
+                    <p>With over 10 years of experience, we've helped thousands transform their bodies and minds. Join a community committed to excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/png dumb.png" alt="Personal Training Icon">
+                    <h3>Personal Training</h3>
+                    <p>One-on-one sessions with certified trainers to maximize your progress and prevent injury.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/food icon.png" >
+                    <h3>Nutrition Plans</h3>
+                    <p>Custom meal plans based on your goals, preferences, and dietary needs for optimal health.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/icon1.png" alt="Home Workouts Icon">
+                    <h3>Home Workouts</h3>
+                    <p>Convenient, equipment-free routines to stay fit from the comfort of your home.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/transform body.png" alt="Body Transformation Icon">
+                    <h3> Body Transformation </h3>
+                    <p>Comprehensive programs combining training, nutrition, and mindset coaching for lasting change.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2>Why Choose FitLife Pro?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <img src="images/tetmo.png" alt="Experienced Trainers">
+                    <h3>Experienced Trainers</h3>
+                    <p>Certified professionals with proven track records in fitness and nutrition.</p>
+                </div>
+                <div class="benefit-item">
+                    <img src="images/yufyu.png" alt="Customized Plans">
+                    <h3>Customized Plans</h3>
+                    <p>Tailored programs that adapt to your unique goals and schedule.</p>
+                </div>
+                <div class="benefit-item">
+                    <img src="images/3red.png" alt="Proven Results">
+                    <h3>Proven Results</h3>
+                    <p>Thousands of success stories from clients who've achieved their dreams.</p>
+                </div>
+                <div class="benefit-item">
+                    <img src="images/group.png" alt="Community Support">
+                    <h3>Community Support</h3>
+                    <p>Join a motivating community for accountability and encouragement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="gallery" class="gallery">
+    <div class="container">
+        <h2>Transformation Gallery</h2>
+        <div class="gallery-grid">
+
+            <div class="gallery-card">
+                <img src="images/Warren-Harding.jpg" alt="Fitness Transformation">
+                <div class="label">
+                    <span>TRANSFORMATION</span>
+                </div>
+            </div>
+            <div class="gallery-card">
+               <img src="images/london1.webp" alt="Fitness Transformation">
+                <div class="label">
+                    <span>TRANSFORMATION</span>
+                </div>
+            </div>
+            <div class="gallery-card">
+                <img src="images/london2.webp" alt="Fitness Transformation">
+                <div class="label">
+                    <span>TRANSFORMATION</span>
+                </div>
+            </div>
+
+            <div class="gallery-card">
+                <img src="images/london3.webp" alt="Fitness Transformation">
+                <div class="label">
+                    <span>TRANSFORMATION</span>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"FitLife Pro changed my life. I lost 30 pounds and gained confidence I never knew I had. The trainers are incredible!"</p>
+                    <cite>- Sarah M., 35</cite>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The nutrition plans are spot-on. I've never felt healthier, and the results speak for themselves."</p>
+                    <cite>- Mike R., 42</cite>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Home workouts made it easy to stay consistent. Highly recommend for busy professionals."</p>
+                    <cite>- Emily L., 28</cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <form class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="neo-footer">
+    <!-- animated background -->
+    <div class="neo-glow"></div>
+    <div class="neo-particles"></div>
+
+    <div class="neo-content">
+        <h2 class="neo-logo">FitLife Pro</h2>
+        <p class="neo-tagline">Transform your body • Elevate your life</p>
+
+        <div class="neo-socials">
+            <a href="#"><img src="images/insta.png" alt="Instagram"></a>
+            <a href="#"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+            <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+        </div>
+
+        <span class="neo-copy">
+            © 2026 FitLife Pro. All rights reserved.
+        </span>
+    </div>
+</footer>
+</body>
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
+  });
+});
+const navbar = document.querySelector(".navbar");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 80) {
+    navbar.style.background = "rgba(0,0,0,0.95)";
+    navbar.style.boxShadow = "0 5px 20px rgba(0,255,136,0.4)";
+    navbar.style.padding = "0.6rem 0";
+  } else {
+    navbar.style.background = "rgba(0,0,0,0.9)";
+    navbar.style.boxShadow = "none";
+    navbar.style.padding = "1rem 0";
+  }
+});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll("section").forEach(section => {
+  section.style.opacity = 0;
+  section.style.transform = "translateY(60px)";
+  section.style.transition = "0.8s ease";
+  observer.observe(section);
+});
+const galleryImages = document.querySelectorAll(".gallery-card img");
+const overlay = document.createElement("div");
+overlay.style.cssText = `
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+`;
+const overlayImg = document.createElement("img");
+overlayImg.style.cssText = `
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0,255,136,0.8);
+`;
+overlay.appendChild(overlayImg);
+document.body.appendChild(overlay);
+galleryImages.forEach(img => {
+  img.addEventListener("click", () => {
+    overlay.style.display = "flex";
+    overlayImg.src = img.src;
+  });
+});
+overlay.addEventListener("click", () => {
+  overlay.style.display = "none";
+});
+document.querySelectorAll(".neo-socials img").forEach(icon => {
+  icon.addEventListener("mouseenter", () => {
+    icon.style.animation = "pulseGlow 0.6s infinite alternate";
+  });
+  icon.addEventListener("mouseleave", () => {
+    icon.style.animation = "floatIcon 3.5s ease-in-out infinite";
+  });
+});
+console.log("🔥 FitLife Pro JavaScript Loaded Successfully");
+</script>
+</html>
